@@ -1,38 +1,33 @@
 import React from "react";
-import loginIMG from '../../assets/LoginIMG.png';
 import { NavLink } from "react-router-dom";
-import { Divider, FormContainer, LoginContainer } from "./styles";
-import { Header } from "./styles";
-import { StyledNavLink } from './styles';
-import { Button } from "../../components/Button";
+import { FormContainer, Header, LoginContainer, LoginContent, Separator, SeparatorDesktop, StyledNavLink } from "./styles";
+import logo from '../../assets/logoIMG.png';
+import { Button } from "../../components/Button/button";
 
-
-export function Login() {
+export function Login(){
     return(
         <>
-        <Header></Header>
+        <Header />
         <LoginContainer>
-            <img src={loginIMG} alt="Pessoas planejando num quadro" />
-            
-            <h1>uTask 3.0</h1>
+            <img src={logo} alt="pessoas planejando num quadro" />
+            <SeparatorDesktop />
+            <LoginContent>
+                <h1>uTask 3.0</h1>
+                <form action="">
+                    <FormContainer>
+                        <label htmlFor="">E-mail</label>
+                        <input id="email" placeholder='Endereço de e-mail'></input>
+                        <label htmlFor="">Senha</label>
+                        <input type="password" id="password" placeholder='Senha secreta'></input>
+                    </FormContainer>
+                </form>
+                <span>Esqueceu a senha?</span>
 
-            <form action="">
-                <FormContainer>
-                    <label htmlFor="">E-mail</label>
-                    <input id="email" type="email" placeholder="Endereço de e-mail" />
+                <Button width="100%">Entrar</Button>
+                <Separator />
 
-                    <label htmlFor="">Senha</label>
-                    <input id="password" type="password" placeholder="Senha secreta" />
-                    <span>Esqueceu a senha?</span>
-                </FormContainer>
-
-                <Button type="submit">Entrar</Button>
-            </form>
-            
-            <Divider />
-            
-            <StyledNavLink to="/cadastro">Não tem cadastro? Crie uma conta</StyledNavLink>
-
+                <StyledNavLink to="/cadastro">Não tem cadastro? Crie uma conta</StyledNavLink>
+            </LoginContent>
         </LoginContainer>
         </>
     )

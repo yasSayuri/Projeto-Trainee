@@ -1,98 +1,141 @@
 import styled from "styled-components";
-import { NavLink as RouterNavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 export const Header = styled.header`
-    width: 100%;
-    background: ${(props) => props.theme['blue2']};
-    height: 52px;
+  display: flex;
+  height: 50px;
+  background-color: ${(props) => props.theme['blue-2']};
 `;
-  
+
 export const LoginContainer = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  h1{
-    color: ${(props) => props.theme['blue2']};
-    font-weight: 700;
-    font-size: 42px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    text-align: center;
-    vertical-align: middle;
-    margin-top: 50px;
-    margin-bottom: 30px;
-  }
+  padding: 2rem;
 
   img {
     display: none;
-
-    @media (min-width: 768px) {
-      display: block;
-      width: 550px;
-    }
+    max-width: 580px;
   }
 
   @media (min-width: 768px) {
     flex-direction: row;
-    gap: 2rem;
-    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      display: block;
+      margin-right: 3rem;
+      transform: translateX(-80px);
+      margin-top: 20px;
+    }
+  }
+`;
+
+export const LoginContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1 {
+    color: ${(props) => props.theme['blue-2']};
+    font-weight: 700;
+    font-size: 2.625rem;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  span{
+    color: ${(props) => props.theme['blue-2']};
+    font-weight: 400;
+    font-size: 0.75rem;
+    text-decoration: underline;
+    align-self: flex-start;
+    margin-top: 0.3rem;
   }
 `;
 
 export const FormContainer = styled.div`
-    width: 100%;
-    max-width: 400px;
     display: flex;
-    align-items: left;
-    justify-content: center;
-    gap: 0.3rem;
-    font-size: 16px;
-    font-weight: medium;
     flex-direction: column;
-    text-align: left;
-    
-    
-  label {
-    color: #00122B;
-    margin-top: 15px;
-  }
+    label {
+      font-weight: 400;
+      font-size: 1rem;
+      color: ${(props) => props.theme['blue-6']};
+      margin-bottom: 0.5rem;
+      width: 100%;
+    }
 
-  input {
-    width: 280px;
-    padding: 10px;
-    border: 1px solid #002D6C;
-    border-radius: 8px;
-    background-color: #EEF5FF;
-   
-  }
+    input {
+      padding: 0.4rem;
+      width: 280px;
+      font-size: 1rem;
+      border: 0.01px solid #002D6C;
+      border-radius: 8px;
+      background-color: ${(props) => props.theme['blue-7']};
+        
+      &::placeholder {
+        color: ${(props) => props.theme['blue-6']}; 
+        opacity: 0.5;
+      }
 
-  span {
-    font-size: 12px;
-    color: ${(props) => props.theme["blue2"]};
-    margin-top: 0.25rem;
-    cursor: pointer;
-    align-self: flex-start;
-    text-decoration: underline;
-    margin-bottom: 30px;
+      &:first-of-type {
+        margin-bottom: 1rem; 
+      }
+    }
+
+    @media (min-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        max-width: 500px;
+
+    label {
+      margin-bottom: 0.75rem;
+    }
+    
+    input{
+        width: 400px;
+    }
   }
 `;
 
-export const StyledNavLink = styled(RouterNavLink)`
-    color: #00122B;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 100%;
-    letter-spacing: 0%;
-    vertical-align: middle;
-    text-decoration: underline;
-    text-decoration-style: solid;
-`;
-
-export const Divider = styled.hr`
-  width: 170px;
+export const Separator = styled.div`
+  width: 70%;
   max-width: 400px;
+  height: 1.2px;
+  background-color: #3B5F91;
   margin: 1.5rem 0;
-  color: #3B5F91;
 `;
+
+export const StyledNavLink = styled(NavLink)`
+  font-size: 0.875rem;
+  color: ${(props) => props.theme['blue-6']};
+  text-decoration: underline;
+`;
+
+export const SeparatorDesktop = styled.div`
+    width: 2px;
+    background-color: #9CC7FBB2;
+    height: 550px; 
+    display: none;
+    position: absolute; 
+    top: 55%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+
+    @media (min-width: 768px) {
+        display: block;
+        margin: 0;
+    }
+`;
+
