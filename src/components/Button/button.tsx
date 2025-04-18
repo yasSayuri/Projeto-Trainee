@@ -1,10 +1,26 @@
 import React from "react";
-import { CustomButton } from "./styles";
+import { useNavigate } from "react-router-dom"; 
+import { CustomButton } from "./styles"; 
+
 interface ButtonProps {
-    children: React.ReactNode;
-    width?: string; // permite passar '100%', '200px', etc.
-  }
-  
-export function Button({ children, width = "327px" }: ButtonProps) {
-    return <CustomButton $width={width}>{children}</CustomButton>;
+  children: React.ReactNode;
+  width?: string; 
+  to?: string; 
+  type?: "button" | "submit" | "reset";
+}
+
+export function Button({ children, width = "327px", to, type = "button" }: ButtonProps) {
+  const navigate = useNavigate(); 
+
+  const handleClick = () => {
+    if (to) {
+      navigate(to); 
+    }
+  };
+
+  return (
+    <CustomButton $width={width} onClick={handleClick} type={type}>
+        {children}
+    </CustomButton>
+  );
 }

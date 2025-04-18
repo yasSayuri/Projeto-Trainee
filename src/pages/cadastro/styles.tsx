@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
- 
+
 export const Header = styled.header`
   display: flex;
   height: 50px;
@@ -142,7 +142,6 @@ export const PasswordInputWrapper = styled.div`
 
   input {
     padding-right: 2.5rem;
-   
     box-sizing: border-box;
   }
 
@@ -158,3 +157,4 @@ export const PasswordInputWrapper = styled.div`
     user-select: none;
   }
 `;
+
