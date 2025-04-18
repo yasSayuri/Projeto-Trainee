@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import logo2 from '../../assets/cadIMG.png';
-import { CadastroContainer, CadastroContent, FormContainer, Header, Separator, SeparatorDesktop } from "./styles";
+import { CadastroContainer, CadastroContent, FormContainer, Header, PasswordInputWrapper, Separator, SeparatorDesktop } from "./styles";
 import { Button } from "../../components/Button/button";
 
 export function Cadastro(){
+    const [showPassword, setShowPassword] = useState(false);
+    
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
+    };
+
     return(
         <>
         <Header />
@@ -27,12 +33,36 @@ export function Cadastro(){
 
                         <div>
                             <label htmlFor="password">Senha</label>
-                            <input type="password" id="password" placeholder="Senha secreta" required />
+                            <PasswordInputWrapper>
+                                 <input
+                                    type={showPassword ? "text" : "password"}
+                                    id="password"
+                                    placeholder="Senha secreta"
+                                />
+                                <span
+                                    className="material-icons"
+                                    onClick={togglePasswordVisibility}
+                                >
+                                    {showPassword ? 'visibility' : 'visibility_off'}
+                                </span>
+                             </PasswordInputWrapper>
                         </div>
 
                         <div>
                             <label htmlFor="confirm-password">Confirme a senha</label>
-                            <input type="password" id="confirm-password" placeholder="Senha secreta" required />
+                            <PasswordInputWrapper>
+                                 <input
+                                    type={showPassword ? "text" : "password"}
+                                    id="password"
+                                    placeholder="Senha secreta"
+                                />
+                                <span
+                                    className="material-icons"
+                                    onClick={togglePasswordVisibility}
+                                >
+                                    {showPassword ? 'visibility' : 'visibility_off'}
+                                </span>
+                             </PasswordInputWrapper>
                         </div>
                     </FormContainer>
                 </form>

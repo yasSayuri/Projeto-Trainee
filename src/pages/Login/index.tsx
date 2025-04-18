@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { FormContainer, Header, LoginContainer, LoginContent, Separator, SeparatorDesktop, StyledNavLink } from "./styles";
+import { FormContainer, Header, LoginContainer, LoginContent, PasswordInputWrapper, Separator, SeparatorDesktop, StyledNavLink } from "./styles";
 import logo from '../../assets/logoIMG.png';
 import { Button } from "../../components/Button/button";
 
 export function Login(){
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword((prev) => !prev);
+    };
     return(
         <>
         <Header />
@@ -18,7 +23,19 @@ export function Login(){
                         <label htmlFor="">E-mail</label>
                         <input id="email" placeholder='Endereço de e-mail'></input>
                         <label htmlFor="">Senha</label>
-                        <input type="password" id="password" placeholder='Senha secreta'></input>
+                        <PasswordInputWrapper>
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                id="password"
+                                placeholder="Senha secreta"
+                            />
+                            <span
+                                className="material-icons"
+                                onClick={togglePasswordVisibility}
+                            >
+                                {showPassword ? 'visibility' : 'visibility_off'}
+                            </span>
+                        </PasswordInputWrapper>
                     </FormContainer>
                 </form>
                 <span>Esqueceu a senha?</span>

@@ -139,3 +139,28 @@ export const SeparatorDesktop = styled.div`
     }
 `;
 
+export const PasswordInputWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  input {
+    padding-right: 2.5rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .material-icons {
+    position: absolute;
+    right: 0.8rem;
+    top: 30%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #002D6C;
+    opacity: 0.8;
+    font-size: 24px;
+    user-select: none;
+    text-decoration: none;
+  }
+`;

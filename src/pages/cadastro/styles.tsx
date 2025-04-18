@@ -133,3 +133,28 @@ export const FormContainer = styled.div`
     }
   }
 `;
+
+export const PasswordInputWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  input {
+    padding-right: 2.5rem;
+   
+    box-sizing: border-box;
+  }
+
+  .material-icons {
+    position: absolute;
+    right: 0.7rem;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #002D6C;
+    opacity: 0.8;
+    font-size: 24px;
+    user-select: none;
+  }
+`;
