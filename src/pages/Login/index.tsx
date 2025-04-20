@@ -65,6 +65,10 @@ export function Login() {
                 placeholder="Endereço de e-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                style={{
+                  borderColor: "#002D6C",
+                  backgroundColor:"#EEF5FF",
+                }}
                 required
               />
 
@@ -104,7 +108,7 @@ export function Login() {
                 </span>
               )}
 
-              <span style={{ marginTop: "-0.5rem" }}>Esqueceu a senha?</span>
+              <span style={{ marginTop: "-0.34rem" }}>Esqueceu a senha?</span>
 
               <Button width="100%" type="submit">
                 Entrar
@@ -119,6 +123,7 @@ export function Login() {
           </StyledNavLink>
         </LoginContent>
       </LoginContainer>
+      
     </>
   );
 }

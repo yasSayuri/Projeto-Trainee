@@ -21,7 +21,7 @@ export function Cadastro() {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [passwordError, setPasswordError] = useState(false);
-    const [showSuccessModal, setShowSuccessModal] = useState(false); // ✅ novo estado para o modal
+    const [showSuccessModal, setShowSuccessModal] = useState(false); 
 
     const navigate = useNavigate();
 
@@ -45,10 +45,10 @@ export function Cadastro() {
 
         localStorage.setItem("userData", JSON.stringify(userData));
         setPasswordError(false);
-        setShowSuccessModal(true); // ✅ exibe modal de sucesso
+        setShowSuccessModal(true); 
 
         setTimeout(() => {
-            navigate("/"); // ✅ redireciona após 3 segundos
+            navigate("/"); 
         }, 3000);
     };
 
@@ -72,6 +72,10 @@ export function Cadastro() {
                                     placeholder="Seu nome de usuário"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
+                                    style={{
+                                        borderColor: "#002D6C",
+                                        backgroundColor:"#EEF5FF",
+                                      }}
                                     required
                                 />
                             </div>
@@ -84,6 +88,10 @@ export function Cadastro() {
                                     placeholder="Endereço de e-mail"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
+                                    style={{
+                                        borderColor: "#002D6C",
+                                        backgroundColor:"#EEF5FF",
+                                      }}
                                     required
                                 />
                             </div>

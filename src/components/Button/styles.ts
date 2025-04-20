@@ -10,5 +10,5 @@ export const CustomButton = styled.button<{ $width: string }>`
   font-size: 1rem;
   margin-top: 1.7rem;
   font-weight: 500;
-  color: ${(props) => props.theme['white']};
+  color: #FFFFFF;
 `;

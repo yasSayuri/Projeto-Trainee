@@ -93,6 +93,7 @@ export const FormContainer = styled.div`
     h2{
         font-weight: 600;
         font-size: 1.25rem;
+        color: ${(props) => props.theme['blue-8']}
     }
 
     label {
@@ -112,7 +113,7 @@ export const FormContainer = styled.div`
       background-color: ${(props) => props.theme['blue-7']};
         
       &::placeholder {
-        color: ${(props) => props.theme['blue-6']}; 
+        color: ${(props) => props.theme['blue-9']}; 
         opacity: 0.5;
       }
 
@@ -151,10 +152,11 @@ export const PasswordInputWrapper = styled.div`
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    color: #002D6C;
+    color: ${(props) => props.theme['blue-4']};
     opacity: 0.8;
     font-size: 24px;
     user-select: none;
+    background-color: transparent;
   }
 `;
 

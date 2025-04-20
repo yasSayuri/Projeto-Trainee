@@ -30,4 +30,6 @@ export const defaultTheme = {
   'blue-5': '#5C9DFF',
   'blue-6': '#00122B',
   'blue-7': '#EEF5FF',
+  'blue-8': '#00122A',
+  'blue-9': '#00122B',
 }
