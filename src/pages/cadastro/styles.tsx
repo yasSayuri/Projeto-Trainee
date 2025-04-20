@@ -4,7 +4,7 @@ import React from "react";
 export const Header = styled.header`
   display: flex;
   height: 50px;
-  background-color: ${(props) => props.theme['blue-2']};
+  background-color: ${(props) => props.theme['blue-10']};
 `;
 
 export const Separator = styled.div`

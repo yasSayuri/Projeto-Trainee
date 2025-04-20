@@ -7,7 +7,7 @@ export const darkTheme = {
     'd-gray-2': '#515151',
     'd-gray-3': '#535353',
     'white': '#222222',
-    'blue-2': '#333333',
+    'blue-10': '#333333',
     'd-gray-6': '#2E2E2E',
     'd-gray-8': '#111111',
 

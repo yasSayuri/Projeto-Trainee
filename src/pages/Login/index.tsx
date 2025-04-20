@@ -44,7 +44,6 @@ export function Login() {
     } else {
       setPasswordError(false);
       setErrorMessage("");
-      alert("Login bem-sucedido!");
       navigate("/web");
     }
   };

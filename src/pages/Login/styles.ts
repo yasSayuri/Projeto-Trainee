@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 export const Header = styled.header`
   display: flex;
   height: 50px;
-  background-color: ${(props) => props.theme['blue-2']};
+  background-color: ${(props) => props.theme['blue-10']};
 `;
 
 export const LoginContainer = styled.main`
