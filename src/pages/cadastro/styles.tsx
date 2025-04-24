@@ -88,7 +88,12 @@ export const CadastroContent = styled.div`
 export const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+
+    >div {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
 
     h2{
         font-weight: 600;
@@ -100,7 +105,7 @@ export const FormContainer = styled.div`
       font-weight: 400;
       font-size: 1rem;
       color: ${(props) => props.theme['blue-6']};
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.1rem;
       width: 100%;
     }
 
@@ -126,7 +131,7 @@ export const FormContainer = styled.div`
         max-width: 500px;
 
     label {
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.3rem;
     }
     
     input{

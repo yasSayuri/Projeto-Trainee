@@ -61,12 +61,14 @@ export function Login() {
               <label htmlFor="email">E-mail</label>
               <input
                 id="email"
+                className="input-email"
                 placeholder="Endereço de e-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{
                   borderColor: "#002D6C",
                   backgroundColor:"#EEF5FF",
+            
                 }}
                 required
               />
@@ -98,8 +100,8 @@ export function Login() {
                   style={{
                     color: "#820000",
                     fontSize: "0.875rem",
-                    marginTop: "-0.9rem",
-                    marginBottom: "0.6rem",
+                    marginTop: "0.1rem",
+                    marginBottom: "0rem",
                     textDecoration: "none",
                   }}
                 >
@@ -107,7 +109,7 @@ export function Login() {
                 </span>
               )}
 
-              <span style={{ marginTop: "-0.34rem" }}>Esqueceu a senha?</span>
+              <span style={{ marginTop: "0.34rem" }}>Esqueceu a senha?</span>
 
               <Button width="100%" type="submit">
                 Entrar

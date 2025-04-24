@@ -75,6 +75,10 @@ export const FormContainer = styled.div`
       width: 100%;
     }
 
+    .input-email{
+      width: 100%;
+    }
+
     input {
       padding: 0.4rem;
       width: 280px;
@@ -89,7 +93,7 @@ export const FormContainer = styled.div`
       }
 
       &:first-of-type {
-        margin-bottom: 1rem; 
+        margin-bottom: 0.6rem; 
       }
     }
 
@@ -100,10 +104,10 @@ export const FormContainer = styled.div`
         max-width: 500px;
 
     label {
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
     
-    input{
+    .input-email{
         width: 400px;
     }
   }
