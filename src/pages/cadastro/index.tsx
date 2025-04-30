@@ -186,7 +186,7 @@ export function Cadastro() {
                             <img
                                 src={verificadoIcon}
                                 alt="Conta verificada"
-                                style={{ width: '30px', height: '30px' }}
+                                style={{ width: '30px', height: '30px' ,  minWidth: '30px'}}
                             />
                             <p style={{
                                 fontFamily: 'Poppins',
