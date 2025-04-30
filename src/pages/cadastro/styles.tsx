@@ -57,6 +57,12 @@ export const CadastroContainer = styled.main`
       margin-top: 20px;
     }
   }
+
+  @media (min-width: 1600px) {
+    img {
+      margin-top: 120px;
+    }
+  }
 `;
 
 export const CadastroContent = styled.div`

@@ -14,6 +14,8 @@ export const LoginContainer = styled.main`
   justify-content: center;
   align-items: center;
   padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 
   img {
     display: none;
@@ -24,12 +26,18 @@ export const LoginContainer = styled.main`
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    gap: 6rem;
 
     img {
       display: block;
-      margin-right: 3rem;
       transform: translateX(-80px);
       margin-top: 20px;
+    }
+  }
+
+  @media (min-width: 1600px) {
+    img {
+      margin-top: 120px;
     }
   }
 `;
