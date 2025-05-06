@@ -8,6 +8,7 @@ export const Header = styled.header`
   padding: 1rem;
   height: 80px;
   background-color: ${(props) => props.theme['blue-10']};
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 
   h1{
     background-color: transparent;

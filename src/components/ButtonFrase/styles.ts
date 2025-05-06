@@ -1,3 +1,4 @@
+// styles.ts
 import styled from "styled-components";
 
 export const ModalOverlay = styled.div`
@@ -11,6 +12,13 @@ export const ModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
+
+  @media (min-width: 768px) {
+    position: static;
+    background: none;
+    display: block;
+    z-index: auto;
+  }
 `;
 
 export const ModalContent = styled.div`
@@ -22,6 +30,14 @@ export const ModalContent = styled.div`
   text-align: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   position: relative;
+
+  @media (min-width: 768px) {
+    margin: 2rem auto;
+    box-shadow: none;
+    background: transparent;
+    padding: 0;
+    max-width: 500px;
+  }
 `;
 
 export const ModalHeader = styled.div`
@@ -29,6 +45,10 @@ export const ModalHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    justify-content: center;
+  }
 `;
 
 export const Title = styled.h2`
@@ -40,6 +60,10 @@ export const Title = styled.h2`
   font-size: 14px;
   font-weight: 700;
   margin: 0;
+
+  @media (min-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const AdviceText = styled.p`
@@ -48,6 +72,11 @@ export const AdviceText = styled.p`
   margin-top: 1rem;
   color: ${(props) => props.theme['gray-7']};
   text-align: left;
+
+  @media (min-width: 768px) {
+    text-align: center;
+    font-size: 18px;
+  }
 `;
 
 export const CloseButton = styled.button`
@@ -61,6 +90,10 @@ export const CloseButton = styled.button`
   img {
     width: 30px;
     height: 30px;
+  }
+
+  @media (min-width: 768px) {
+    display: none; 
   }
 `;
 
@@ -82,8 +115,50 @@ export const StyledButton = styled.button`
   font-weight: 600;
   margin: 0 auto;
   margin-top: 2rem;
-  
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+
   &:hover {
     background-color: ${(props) => props.theme['yellow-3']};
+  }
+`;
+
+export const DesktopContainer = styled.div`
+  display: none;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 20px;
+    width: 650px;
+    margin: 2rem 0 2rem 11rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  }
+
+  h2 {
+    font-size: 16px;
+    color: ${(props) => props.theme['gray-5']};
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 16px;
+    color: ${(props) => props.theme['gray-7']};
+    text-align: left;
+    line-height: 1.4;
+  }
+
+  img {
+    width: 44px;
+  }
+
+  @media (min-width: 1600px) {
+    margin: 2rem 0 2rem 43rem;
   }
 `;

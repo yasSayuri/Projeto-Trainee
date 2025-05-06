@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ModalOverlay,
   ModalContent,
@@ -6,7 +6,8 @@ import {
   AdviceText,
   CloseButton,
   StyledButton,
-  ModalHeader
+  ModalHeader,
+  DesktopContainer
 } from "./styles";
 import iconButton from "../../assets/FraseDoDiaBut.png";
 import closeIcon from "../../assets/fecharFrase.png";
@@ -15,6 +16,16 @@ export const ButtonFrase = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [translatedAdvice, setTranslatedAdvice] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsDesktop(window.innerWidth >= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const fetchAdvice = async () => {
     try {
@@ -43,10 +54,8 @@ export const ButtonFrase = () => {
     }
   };
 
-  const handleButtonClick = async () => {
-    setIsModalOpen(true);
+  const loadAdvice = async () => {
     setIsLoading(true);
-    
     try {
       const advice = await fetchAdvice();
       if (advice) {
@@ -54,41 +63,67 @@ export const ButtonFrase = () => {
         setTranslatedAdvice(translation);
       }
     } catch (error) {
-      console.error("Error:", error);
       setTranslatedAdvice("Não foi possível carregar a frase.");
     } finally {
       setIsLoading(false);
     }
   };
 
+  useEffect(() => {
+    if (isDesktop) {
+      loadAdvice();
+    }
+  }, [isDesktop]);
+
+  const handleButtonClick = () => {
+    setIsModalOpen(true);
+    loadAdvice();
+  };
+
   return (
     <>
-      <StyledButton onClick={handleButtonClick}>
-        <img src={iconButton} alt="lâmpada" width="44" />
-        Frase do Dia
-      </StyledButton>
-
-      {isModalOpen && (
-  <ModalOverlay onClick={() => setIsModalOpen(false)}>
-    <ModalContent onClick={(e) => e.stopPropagation()}>
-      <ModalHeader>
-        <Title>
+      {!isDesktop && (
+        <StyledButton onClick={handleButtonClick}>
           <img src={iconButton} alt="lâmpada" width="44" />
           Frase do Dia
-        </Title>
-        <CloseButton onClick={() => setIsModalOpen(false)}>
-          <img src={closeIcon} alt="Fechar" width="30" />
-        </CloseButton>
-      </ModalHeader>
-      
-      {isLoading ? (
-        <AdviceText>Carregando...</AdviceText>
-      ) : (
-        <AdviceText>"{translatedAdvice}"</AdviceText>
+        </StyledButton>
       )}
-    </ModalContent>
-  </ModalOverlay>
-)}
+
+      {isDesktop ? (
+        <DesktopContainer>
+          <Title>
+            <img src={iconButton} alt="lâmpada" />
+            Frase do Dia
+          </Title>
+          {isLoading ? (
+            <AdviceText>Carregando...</AdviceText>
+          ) : (
+            <AdviceText>"{translatedAdvice}"</AdviceText>
+          )}
+        </DesktopContainer>
+      ) : (
+        isModalOpen && (
+          <ModalOverlay onClick={() => setIsModalOpen(false)}>
+            <ModalContent onClick={(e) => e.stopPropagation()}>
+              <ModalHeader>
+                <Title>
+                  <img src={iconButton} alt="lâmpada" width="44" />
+                  Frase do Dia
+                </Title>
+                <CloseButton onClick={() => setIsModalOpen(false)}>
+                  <img src={closeIcon} alt="Fechar" width="30" />
+                </CloseButton>
+              </ModalHeader>
+
+              {isLoading ? (
+                <AdviceText>Carregando...</AdviceText>
+              ) : (
+                <AdviceText>"{translatedAdvice}"</AdviceText>
+              )}
+            </ModalContent>
+          </ModalOverlay>
+        )
+      )}
     </>
   );
 };

@@ -7,6 +7,7 @@ import { Header } from "./styles.ts";
 import { PageWrapper } from "../../components/PageWrapper.tsx";
 import iconButton from "../../assets/FraseDoDiaBut.png";
 import { ButtonFrase } from "../../components/ButtonFrase/buttonFrase.tsx";
+import { PageWrapperWeb } from "../../components/Page.WrapperWeb.tsx";
 interface WebProps {
   toggleTheme: () => void;
   currentTheme: 'light' | 'dark';
@@ -18,7 +19,7 @@ export function Web() {
   
     return (
       <>
-      <PageWrapper>
+      <PageWrapperWeb>
       <Header> 
         <img src={logobranca} alt="Logo unect"/>
         <h1>uTask 3.0</h1>
@@ -30,7 +31,7 @@ export function Web() {
       </div>
       </Header>
       <ButtonFrase />
-      </PageWrapper>
+      </PageWrapperWeb>
       </>
     );
   }
