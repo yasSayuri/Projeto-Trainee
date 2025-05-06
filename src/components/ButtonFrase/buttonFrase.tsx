@@ -64,7 +64,7 @@ export const ButtonFrase = () => {
   return (
     <>
       <StyledButton onClick={handleButtonClick}>
-        <img src={iconButton} alt="lâmpada" width="20" />
+        <img src={iconButton} alt="lâmpada" width="44" />
         Frase do Dia
       </StyledButton>
 

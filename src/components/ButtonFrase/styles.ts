@@ -65,17 +65,25 @@ export const CloseButton = styled.button`
 `;
 
 export const StyledButton = styled.button`
-  background: none;
+  background: ${(props) => props.theme['yellow-2']};
   border: none;
+  width: 250px;
+  height: 60px;
+  color: ${(props) => props.theme['white']};
   cursor: pointer;
   display: flex;
+  justify-content: left;
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
-  border-radius: 4px;
+  border-radius: 10px;
   transition: background-color 0.2s;
-
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 auto;
+  margin-top: 2rem;
+  
   &:hover {
-    background-color: #f0f0f0;
+    background-color: ${(props) => props.theme['yellow-3']};
   }
 `;
