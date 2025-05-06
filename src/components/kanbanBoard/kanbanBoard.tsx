@@ -8,8 +8,6 @@ import {
   ColumnTitle,
   MobileScrollContainer,
   DesktopWrapper,
-  ArrowButton,
-  StatusDots,
   ColumnHeader,
   ColumnsContainer,
   AddTaskIcon,
@@ -17,10 +15,14 @@ import {
   ModalContent,
   ModalActions,
   Separator,
-  MobileHeaderContainer
+  MobileHeaderContainer,
+  CustomArrow
 } from './styles';
 import task from "../../assets/task.png";
-
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { SliderContainer } from './styles'; 
 interface Tarefa {
   id: number;
   titulo: string;
@@ -87,67 +89,73 @@ export const KanbanBoard = () => {
       ));
   };
 
-  const handleArrowClick = (direction: 'left' | 'right') => {
-    const newIndex = direction === 'left' ? currentIndex - 1 : currentIndex + 1;
-    if (newIndex >= 0 && newIndex < 3) {
-      setCurrentIndex(newIndex);
-    }
+  const CustomPrevArrow = (props: any) => {
+    const { onClick, currentSlide } = props;
+    return (
+      <CustomArrow 
+        direction="left" 
+        onClick={onClick}
+        disabled={currentSlide === 0}
+      >
+        <i className="material-icons">arrow_back_ios</i>
+      </CustomArrow>
+    );
   };
-
-  const handleDotClick = (index: number) => {
-    setCurrentIndex(index);
+  
+  const CustomNextArrow = (props: any) => {
+    const { onClick, slideCount, currentSlide } = props;
+    return (
+      <CustomArrow 
+        direction="right" 
+        onClick={onClick}
+        disabled={currentSlide === slideCount - 1}
+      >
+        <i className="material-icons">arrow_forward_ios</i>
+      </CustomArrow>
+    );
   };
 
   return (
     <BoardWrapper>
       {isMobile ? (
-        <div style={{ position: 'relative' }}>
-        <MobileHeaderContainer>
-          <ColumnHeader>
-            <ColumnTitle>
-              {statusLabels[Object.keys(statusLabels)[currentIndex] as Tarefa['status']]}
-              {Object.keys(statusLabels)[currentIndex] === 'a-fazer' && (
-                <AddTaskIcon
-                  src={task}
-                  alt="circulo com mais"
-                  onClick={() => setModalAberto(true)}
-                />
-              )}
-            </ColumnTitle>
-          </ColumnHeader>
-          </MobileHeaderContainer>
+  <SliderContainer>
+    <MobileHeaderContainer>
+      <ColumnHeader>
+        <ColumnTitle>
+          {statusLabels[Object.keys(statusLabels)[currentIndex] as Tarefa['status']]}
+          {Object.keys(statusLabels)[currentIndex] === 'a-fazer' && (
+            <AddTaskIcon
+              src={task}
+              alt="circulo com mais"
+              onClick={() => setModalAberto(true)}
+            />
+          )}
+        </ColumnTitle>
+      </ColumnHeader>
+    </MobileHeaderContainer>
 
-          <MobileScrollContainer
-            style={{
-              transform: `translateX(-${currentIndex * 114}%)`,
-              transition: 'transform 0.3s ease',
-            }}
-          >
-            {Object.keys(statusLabels).map((status) => (
-              <Column key={status} style={{ width: '100%', flex: '0 0 100%' }}>
-                {renderTasksByStatus(status as Tarefa['status'])}
-              </Column>
-            ))}
-          </MobileScrollContainer>
-
-          <ArrowButton direction="left" onClick={() => handleArrowClick('left')} disabled={currentIndex === 0}>
-            <i className="material-icons">arrow_back_ios</i>
-          </ArrowButton>
-
-          <ArrowButton direction="right" onClick={() => handleArrowClick('right')} disabled={currentIndex === 2}>
-            <i className="material-icons">arrow_forward_ios</i>
-          </ArrowButton>
-
-          <StatusDots>
-            {Object.keys(statusLabels).map((_, index) => (
-              <div
-                key={index}
-                className={`dot ${currentIndex === index ? 'active' : ''}`}
-                onClick={() => handleDotClick(index)}
-              />
-            ))}
-          </StatusDots>
-        </div>
+    <Slider
+        dots={true}
+        infinite={false}
+        speed={300}
+        slidesToShow={1}
+        slidesToScroll={1}
+        beforeChange={(current, next) => setCurrentIndex(next)}
+        prevArrow={<CustomPrevArrow />}
+        nextArrow={<CustomNextArrow />}
+        appendDots={dots => (
+            <div>
+            <ul style={{ margin: "0px", paddingBottom: "16px" }}>{dots}</ul>
+            </div>
+        )}
+        >
+        {Object.keys(statusLabels).map((status) => (
+            <Column key={status}>
+            {renderTasksByStatus(status as Tarefa['status'])}
+            </Column>
+  ))}
+    </Slider>
+  </SliderContainer>
       ) : (
         <DesktopWrapper>
           <ColumnsContainer>
@@ -157,7 +165,7 @@ export const KanbanBoard = () => {
                   {statusLabels[status as Tarefa['status']]}
                   {status === 'a-fazer' && (
                     <AddTaskIcon
-                      src="/task.png"
+                      src={task}
                       alt="Adicionar tarefa"
                       onClick={() => setModalAberto(true)}
                     />

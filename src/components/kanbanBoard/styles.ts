@@ -3,6 +3,12 @@ import styled from "styled-components";
 export const BoardWrapper = styled.div`
   width: 100%;
   padding: 1rem;
+
+  @media (min-width: 768px) {
+    padding-left: 4rem; 
+    max-width: 1300px;
+    margin: 0 auto;
+  }
 `;
 
 export const MobileScrollContainer = styled.div`
@@ -10,31 +16,54 @@ export const MobileScrollContainer = styled.div`
   width: 80%;
   margin: 0 auto;
   gap: 2rem; 
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 export const MobileHeaderContainer = styled.div`
   width: 100%;
-  margin: 0 auto;
+  margin: 0;
   padding: 0 1rem;
   margin-top: 1rem;
+  position: relative;
+  padding-left: 30px;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
 `;
 
 export const DesktopWrapper = styled.div`
   width: 100%;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 `;
 
 export const ColumnsContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 1rem;
+
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+    gap: 2rem;
+    padding-right: 2rem;
+    overflow-x: auto;
+  }
 `;
 
 export const ColumnHeader = styled.div`
-  padding: 0 1rem;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   position: relative;
+  width: 100%;
 `;
 
 export const Column = styled.div`
@@ -42,12 +71,19 @@ export const Column = styled.div`
   background: ${(props) => props.theme['light-gray']};
   border-radius: 10px;
   min-height: 250px;
+
 `;
 
 export const ColumnTitle = styled.h3`
   font-size: 20px;
   font-weight: 400;
   color: ${(props) => props.theme["gray-7"]};
+  width: 100%;
+  margin-left: -25px;
+
+  @media (min-width: 768px) {
+    margin-left: 0;
+  }
 `;
 
 export const TaskCard = styled.div`
@@ -60,58 +96,20 @@ export const TaskCard = styled.div`
   font-size: 14px;
 `;
 
-export const ArrowButton = styled.button<{ direction: 'left' | 'right', disabled?: boolean }>`
-  position: absolute;
-  top: 50%;
-  ${(props) => (props.direction === 'left' ? 'left: 0;' : 'right: 0;')}
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 30px;
-  cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
-  color: ${(props) => props.disabled ? props.theme['medium-gray'] : props.theme['blue-2']};
-  z-index: 1;
-
-  &:hover {
-    color: ${(props) => !props.disabled && props.theme['blue-4']};
-  }
-
-  @media (min-width: 768px) {
-    display: none;
-  }
-`;
-
-export const StatusDots = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 16px;
-  padding-bottom: 16px;
-
-  .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: ${(props) => props.theme['medium-gray']};
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-
-  .dot.active {
-    background-color: ${(props) => props.theme['blue-2']};
-  }
-
-  @media (min-width: 768px) {
-    display: none;
-  }
-`;
-
 export const AddTaskIcon = styled.img`
   width: 24px;
   height: 24px;
   cursor: pointer;
   position: absolute;
-  right: 1rem;
+  right: -0.5rem;
+
+  @media (min-width: 768px) {
+    left: 32.5rem;
+  }
+
+  @media (min-width: 1600px) {
+    left: 64.5rem;
+  }
 `;
 
 export const ModalOverlay = styled.div`
@@ -138,6 +136,7 @@ export const ModalContent = styled.div`
     margin-bottom: 1rem;
     color: ${(props) => props.theme['blue-2']};
     text-align: center;
+    
   }
 
   input {
@@ -192,4 +191,66 @@ export const ModalActions = styled.div`
       color: white;
     }
   }
+`;
+
+export const SliderContainer = styled.div`
+  position: relative;
+  padding: 0 40px; 
+  width: 100%;
+
+  .slick-slide {
+    padding: 0 10px;
+  }
+  
+  .slick-list {
+    margin: 0 -10px;
+  }
+  
+  .slick-dots {
+    bottom: -45px;
+    
+    li {
+      margin: 0;
+      
+      button:before {
+        color: ${(props) => props.theme['medium-gray']};
+        opacity: 1;
+        font-size: 10px;
+      }
+      
+      &.slick-active button:before {
+        color: ${(props) => props.theme['blue-2']};
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 30px;
+  }
+`;
+
+export const CustomArrow = styled.div<{ direction: 'left' | 'right', disabled?: boolean }>`
+    position: absolute;
+    top: 50%;
+    ${(props) => (props.direction === 'left' ? 'left: -35px;' : 'right: -35px;')}
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: ${(props) => (props.disabled ? 'default' : 'pointer')};
+    color: ${(props) => props.disabled ? props.theme['medium-gray'] : props.theme['blue-2']};
+    z-index: 1;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        color: ${(props) => !props.disabled && props.theme['blue-4']};
+    }
+
+    @media (max-width: 480px) {
+        ${(props) => (props.direction === 'left' ? 'left: -35px;' : 'right: -35px;')}
+    }
 `;
