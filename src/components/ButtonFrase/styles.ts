@@ -135,7 +135,7 @@ export const DesktopContainer = styled.div`
     padding: 1.5rem;
     border-radius: 20px;
     width: 650px;
-    margin: 2rem 0 2rem 11rem;
+    margin: 2rem 0 2rem 12rem;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
 
@@ -159,6 +159,6 @@ export const DesktopContainer = styled.div`
   }
 
   @media (min-width: 1600px) {
-    margin: 2rem 0 2rem 43rem;
+    margin: 2rem 0 2rem 44rem;
   }
 `;

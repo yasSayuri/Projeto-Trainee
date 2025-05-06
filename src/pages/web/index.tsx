@@ -8,6 +8,7 @@ import { PageWrapper } from "../../components/PageWrapper.tsx";
 import iconButton from "../../assets/FraseDoDiaBut.png";
 import { ButtonFrase } from "../../components/ButtonFrase/buttonFrase.tsx";
 import { PageWrapperWeb } from "../../components/Page.WrapperWeb.tsx";
+import { KanbanBoard } from "../../components/kanbanBoard/kanbanBoard.tsx";
 interface WebProps {
   toggleTheme: () => void;
   currentTheme: 'light' | 'dark';
@@ -31,6 +32,7 @@ export function Web() {
       </div>
       </Header>
       <ButtonFrase />
+      <KanbanBoard />
       </PageWrapperWeb>
       </>
     );

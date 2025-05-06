@@ -24,6 +24,6 @@ export const Header = styled.header`
 
   @media (min-width: 768px) {
     justify-content: center;
-    gap: 30rem;
+    gap: 29rem;
   }
 `;
