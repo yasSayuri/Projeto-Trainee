@@ -13,6 +13,7 @@ import {
     SeparatorDesktop
 } from "./styles";
 import { Button } from "../../components/Button/button";
+import { PageWrapper } from "../../components/PageWrapper";
 
 export function Cadastro() {
     const [showPassword, setShowPassword] = useState(false);
@@ -54,6 +55,7 @@ export function Cadastro() {
 
     return (
         <>
+        <PageWrapper>
             <Header />
             <CadastroContainer>
                 <SeparatorDesktop />
@@ -214,6 +216,7 @@ export function Cadastro() {
                     </div>
                 </div>
             )}
+            </PageWrapper>
         </>
     );
 }

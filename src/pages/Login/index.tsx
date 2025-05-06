@@ -12,6 +12,7 @@ import {
 } from "./styles";
 import logo from "../../assets/logoIMG.png";
 import { Button } from "../../components/Button/button";
+import { PageWrapper } from "../../components/PageWrapper";
 
 export function Login() {
   const [showPassword, setShowPassword] = useState(false);
@@ -50,6 +51,7 @@ export function Login() {
 
   return (
     <>
+    <PageWrapper>
       <Header />
       <LoginContainer>
         <img src={logo} alt="pessoas planejando num quadro" />
@@ -124,7 +126,7 @@ export function Login() {
           </StyledNavLink>
         </LoginContent>
       </LoginContainer>
-      
+      </PageWrapper>
     </>
   );
 }

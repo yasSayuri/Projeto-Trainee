@@ -6,6 +6,23 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  height: 50px;
+  height: 80px;
   background-color: ${(props) => props.theme['blue-10']};
+
+  h1{
+    background-color: transparent;
+    color: ${(props) => props.theme['white']};
+    font-size: 30px;
+    font-weight: 700;
+  }
+
+  img{
+    background-color: transparent;
+    width: 23px;
+  }
+
+  @media (min-width: 768px) {
+    justify-content: center;
+    gap: 30rem;
+  }
 `;
