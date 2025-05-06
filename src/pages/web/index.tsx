@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { ButtonThemes } from "../../components/ButtonThemes/buttonThemes.tsx";
 import { useTheme } from "../../contexts/ThemeContext";
 import  logobranca  from "../../assets/LogoBranca.png";
-import { Header } from "./styles.ts";
+import { Footer, Header, HeartIcon } from "./styles.ts";
 import { PageWrapper } from "../../components/PageWrapper.tsx";
 import iconButton from "../../assets/FraseDoDiaBut.png";
 import { ButtonFrase } from "../../components/ButtonFrase/buttonFrase.tsx";
@@ -34,6 +34,11 @@ export function Web() {
       <ButtonFrase />
       <KanbanBoard />
       </PageWrapperWeb>
+
+      <Footer>
+        <h2>© Processo de Trainee <span>Unect Jr.</span></h2>
+        <h2>Feito com <HeartIcon className="material-icons">favorite</HeartIcon> por <span>Yasmin Sayuri</span></h2>
+      </Footer>
       </>
     );
   }

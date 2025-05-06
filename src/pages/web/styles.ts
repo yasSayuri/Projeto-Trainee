@@ -27,3 +27,40 @@ export const Header = styled.header`
     gap: 29rem;
   }
 `;
+
+export const Footer = styled.footer`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: left;
+  padding: 1rem;
+  height: 70px;
+  background-color: ${(props) => props.theme['blue-3']};
+
+  h2{
+    background-color: transparent;
+    color: ${(props) => props.theme['white']};
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  span{
+    background-color: transparent;
+    color: ${(props) => props.theme['white']};
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 43rem;
+  }
+`;
+
+export const HeartIcon = styled.i`
+  color: ${(props) => props.theme['red-1']};
+  font-size: 16px;
+`;
