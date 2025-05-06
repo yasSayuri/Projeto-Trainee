@@ -11,6 +11,7 @@ export const MobileScrollContainer = styled.div`
   margin: 0 auto;
   gap: 2rem; 
 `;
+
 export const MobileHeaderContainer = styled.div`
   width: 100%;
   margin: 0 auto;
@@ -110,7 +111,7 @@ export const AddTaskIcon = styled.img`
   height: 24px;
   cursor: pointer;
   position: absolute;
-  right: 2rem;
+  right: 1rem;
 `;
 
 export const ModalOverlay = styled.div`
@@ -124,7 +125,6 @@ export const ModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 9999;
-
 `;
 
 export const ModalContent = styled.div`
@@ -133,7 +133,6 @@ export const ModalContent = styled.div`
   border-radius: 20px;
   max-width: 400px;
   width: 90%;
-
 
   h3 {
     margin-bottom: 1rem;
