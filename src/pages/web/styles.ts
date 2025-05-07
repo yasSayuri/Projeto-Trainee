@@ -12,7 +12,7 @@ export const Header = styled.header`
 
   h1{
     background-color: transparent;
-    color: ${(props) => props.theme['white']};
+    color: ${(props) => props.theme['white2']};
     font-size: 30px;
     font-weight: 700;
   }
@@ -29,36 +29,40 @@ export const Header = styled.header`
 `;
 
 export const Footer = styled.footer`
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: ${(props) => props.theme['blue-3']};
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: left;
   padding: 1rem;
-  height: 70px;
-  background-color: ${(props) => props.theme['blue-3']};
 
-  h2{
+  h2 {
     background-color: transparent;
-    color: ${(props) => props.theme['white']};
+    color: ${(props) => props.theme['white3']};
     font-size: 14px;
     font-weight: 400;
   }
 
-  span{
+  span {
     background-color: transparent;
-    color: ${(props) => props.theme['white']};
+    color: ${(props) => props.theme['white3']};
     font-size: 14px;
     font-weight: 700;
   }
 
   @media (min-width: 768px) {
-    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 43rem;
   }
 `;
+
 
 export const HeartIcon = styled.i`
   color: ${(props) => props.theme['red-1']};

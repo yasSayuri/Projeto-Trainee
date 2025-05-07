@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const BoardWrapper = styled.div`
   width: 100%;
-  padding: 1rem;
 
   @media (min-width: 768px) {
     padding-left: 4rem; 
@@ -73,9 +72,18 @@ export const Column = styled.div`
   min-height: 250px;
   max-height: 280px;
   overflow-y: auto;
+  
 
   @media (min-width: 768px) {
-    max-height: 300px;
+    min-height: 260px;
+    max-height: 260px;
+    overflow-y: auto;
+  }
+
+  @media (min-width: 1600px) {
+  
+    min-height: 400px;
+    max-height: 400px;
     overflow-y: auto;
   }
 
@@ -94,7 +102,7 @@ export const ColumnTitle = styled.h3`
 `;
 
 export const TaskCard = styled.div`
-  background: ${(props) => props.theme["white"]};
+  background: ${(props) => props.theme["white4"]};
   color: ${(props) => props.theme["gray-7"]};
   padding: 0.75rem;
   border-radius: 8px;
@@ -134,7 +142,7 @@ export const ModalOverlay = styled.div`
 `;
 
 export const ModalContent = styled.div`
-  background: #fff;
+  background: ${(props) => props.theme['white4']};
   padding: 2rem;
   border-radius: 20px;
   max-width: 400px;
@@ -145,6 +153,10 @@ export const ModalContent = styled.div`
     color: ${(props) => props.theme['blue-2']};
     text-align: center;
     
+  }
+
+  label {
+    color: ${(props) => props.theme['gray-7']};
   }
 
   input {
@@ -171,7 +183,7 @@ export const ModalContent = styled.div`
 `;
 
 export const Separator = styled.div`
-  width: 55%;
+  width: 45%;
   height: 3px;
   background-color: ${(props) => props.theme['blue-2']};
   margin-top: -1rem !important;
@@ -314,7 +326,7 @@ export const DescriptionToggle = styled.div<{ expanded: boolean }>`
   cursor: pointer;
   display: flex;
   align-items: center;
-  color: ${(props) => props.expanded ? props.theme['blue-4'] : props.theme['gray-7']};
+  color: ${(props) => props.expanded ? props.theme['blue-42'] : props.theme['gray-7']};
   font-size: 13px;
   font-weight: 300;
 `;
@@ -334,6 +346,6 @@ export const MoveButton = styled.button`
 
   i.material-icons {
     font-size: 16px;
-    color: white;
+    color: ${(props) => props.theme['white4']};
   }
 `;

@@ -1,4 +1,3 @@
-// styles.ts
 import styled from "styled-components";
 
 export const ModalOverlay = styled.div`
@@ -12,6 +11,7 @@ export const ModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
+  
 
   @media (min-width: 768px) {
     position: static;

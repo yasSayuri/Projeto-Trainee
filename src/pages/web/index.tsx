@@ -9,6 +9,7 @@ import iconButton from "../../assets/FraseDoDiaBut.png";
 import { ButtonFrase } from "../../components/ButtonFrase/buttonFrase.tsx";
 import { PageWrapperWeb } from "../../components/Page.WrapperWeb.tsx";
 import { KanbanBoard } from "../../components/kanbanBoard/kanbanBoard.tsx";
+import { Content } from "../../components/Page.WrapperWeb.tsx";
 interface WebProps {
   toggleTheme: () => void;
   currentTheme: 'light' | 'dark';
@@ -31,10 +32,11 @@ export function Web() {
         />
       </div>
       </Header>
+      <Content>
       <ButtonFrase />
       <KanbanBoard />
+      </Content>
       </PageWrapperWeb>
-
       <Footer>
         <h2>© Processo de Trainee <span>Unect Jr.</span></h2>
         <h2>Feito com <HeartIcon className="material-icons">favorite</HeartIcon> por <span>Yasmin Sayuri</span></h2>

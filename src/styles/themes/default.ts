@@ -1,5 +1,8 @@
 export const defaultTheme = {
-    'white': '#FFFFFF',
+  'white': '#FFFFFF',
+  'white2': '#FFFFFF',
+  'white3': '#FFFFFF',
+  'white4': '#FFFFFF',
   'off-white-1': '#FFFCEE',
   'off-white-2': '#FAFAFA',
   'off-white-3': '#FFF5C0',
@@ -13,6 +16,7 @@ export const defaultTheme = {
   'gray-7': '#141414',
   'gray-8': '#111111',
 
+  
   'light-gray': '#EEEEEE',
   'medium-gray': '#C4C4C4',
 
@@ -23,6 +27,7 @@ export const defaultTheme = {
   'yellow-2': '#FFD569',
   'yellow-3': '#FBB910',
 
+  'blue-42': '#002D6C',
   'blue-1': '#4890F5',
   'blue-2': '#226ED8',
   'blue-3': '#114FA7',

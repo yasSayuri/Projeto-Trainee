@@ -96,7 +96,7 @@ export const ButtonFrase = () => {
             Frase do Dia
           </Title>
           {isLoading ? (
-            <AdviceText>Carregando...</AdviceText>
+            <AdviceText>Procurando sua frase...</AdviceText>
           ) : (
             <AdviceText>"{translatedAdvice}"</AdviceText>
           )}
@@ -116,7 +116,7 @@ export const ButtonFrase = () => {
               </ModalHeader>
 
               {isLoading ? (
-                <AdviceText>Carregando...</AdviceText>
+                <AdviceText>Procurando sua frase...</AdviceText>
               ) : (
                 <AdviceText>"{translatedAdvice}"</AdviceText>
               )}

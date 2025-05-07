@@ -129,7 +129,13 @@ export const KanbanBoard = () => {
       .map((tarefa) => (
         <TaskCard key={tarefa.id}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            <div
+              style={{
+                textDecoration: tarefa.status === 'feito' ? 'line-through' : 'none', 
+              }}
+            >
             {tarefa.titulo}
+            </div>
             <div style={{ position: 'relative' }}>
               <TaskMenuButton onClick={() => toggleMenu(tarefa.id)}>
                 <i className="material-icons">more_vert</i>
@@ -164,7 +170,7 @@ export const KanbanBoard = () => {
           {expandedDescriptions[tarefa.id] && tarefa.descricao && (
             <div style={{
               marginTop: '8px',
-              backgroundColor: '#f5f5f5',
+              backgroundColor: 'transparent',
               borderRadius: '4px',
               wordBreak: 'break-word',
               fontSize: '13px',
@@ -235,21 +241,21 @@ export const KanbanBoard = () => {
   return (
     <BoardWrapper>
       {isMobile ? (
-  <SliderContainer>
-    <MobileHeaderContainer>
-      <ColumnHeader>
-        <ColumnTitle>
-          {statusLabels[Object.keys(statusLabels)[currentIndex] as Tarefa['status']]}
-          {Object.keys(statusLabels)[currentIndex] === 'a-fazer' && (
-            <AddTaskIcon
-              src={task}
-              alt="circulo com mais"
-              onClick={() => setModalAberto(true)}
-            />
-          )}
-        </ColumnTitle>
-      </ColumnHeader>
-    </MobileHeaderContainer>
+        <SliderContainer>
+          <MobileHeaderContainer>
+            <ColumnHeader>
+              <ColumnTitle>
+                {statusLabels[Object.keys(statusLabels)[currentIndex] as Tarefa['status']]}
+                {Object.keys(statusLabels)[currentIndex] === 'a-fazer' && (
+                  <AddTaskIcon
+                    src={task}
+                    alt="circulo com mais"
+                    onClick={() => setModalAberto(true)}
+                  />
+                )}
+              </ColumnTitle>
+            </ColumnHeader>
+          </MobileHeaderContainer>
 
     <Slider
         dots={true}
