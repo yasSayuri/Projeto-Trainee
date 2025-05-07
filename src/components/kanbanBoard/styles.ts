@@ -71,6 +71,13 @@ export const Column = styled.div`
   background: ${(props) => props.theme['light-gray']};
   border-radius: 10px;
   min-height: 250px;
+  max-height: 280px;
+  overflow-y: auto;
+
+  @media (min-width: 768px) {
+    max-height: 300px;
+    overflow-y: auto;
+  }
 
 `;
 
@@ -94,6 +101,7 @@ export const TaskCard = styled.div`
   margin-bottom: 0.5rem;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   font-size: 14px;
+  font-weight: 600;
 `;
 
 export const AddTaskIcon = styled.img`
@@ -104,11 +112,11 @@ export const AddTaskIcon = styled.img`
   right: -0.5rem;
 
   @media (min-width: 768px) {
-    left: 32.5rem;
+    left: 32rem;
   }
 
   @media (min-width: 1600px) {
-    left: 64.5rem;
+    left: 64rem;
   }
 `;
 
@@ -177,10 +185,11 @@ export const ModalActions = styled.div`
   gap: 1rem;
 
   button {
-    padding: 0.5rem 1rem;
-    border-radius: 6px;
+    padding: 10px 10px;
+    border-radius: 20px;
     border: none;
     cursor: pointer;
+    width: 100%;
 
     &:first-child {
       background: ${(props) => props.theme['gray-3']};
@@ -253,4 +262,59 @@ export const CustomArrow = styled.div<{ direction: 'left' | 'right', disabled?: 
     @media (max-width: 480px) {
         ${(props) => (props.direction === 'left' ? 'left: -35px;' : 'right: -35px;')}
     }
+`;
+
+export const CloseIcon = styled.img`
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  transition: opacity 0.2s;
+  
+  &:hover {
+    opacity: 0.7;
+  }
+`;
+
+export const TaskMenuButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: ${(props) => props.theme['gray-7']};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const TaskMenu = styled.div`
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  z-index: 10;
+  min-width: 120px;
+`;
+
+export const DeleteButton = styled.button`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  color: ${(props) => props.theme['red-2']};
+  cursor: pointer;
+  text-align: left;
+`;
+
+export const DescriptionToggle = styled.div<{ expanded: boolean }>`
+  margin-top: 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: ${(props) => props.expanded ? props.theme['blue-4'] : props.theme['gray-7']};
+  font-size: 13px;
+  font-weight: 300;
 `;

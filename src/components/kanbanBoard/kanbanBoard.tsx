@@ -1,4 +1,3 @@
-// KanbanBoard.tsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
@@ -16,13 +15,20 @@ import {
   ModalActions,
   Separator,
   MobileHeaderContainer,
-  CustomArrow
+  CustomArrow,
+  TaskMenuButton,
+  TaskMenu,
+  DeleteButton,
+  DescriptionToggle
 } from './styles';
 import task from "../../assets/task.png";
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { SliderContainer } from './styles'; 
+import Close from "../../assets/fecharFrase.png";
+import { CloseIcon } from './styles';
+
 interface Tarefa {
   id: number;
   titulo: string;
@@ -40,10 +46,11 @@ export const KanbanBoard = () => {
   const [tarefas, setTarefas] = useState<Tarefa[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
   const [modalAberto, setModalAberto] = useState(false);
   const [titulo, setTitulo] = useState('');
   const [descricao, setDescricao] = useState('');
+  const [activeMenuId, setActiveMenuId] = useState<number | null>(null);
+  const [expandedDescriptions, setExpandedDescriptions] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
     const handleResize = () => {
@@ -81,11 +88,78 @@ export const KanbanBoard = () => {
       .catch((err) => console.error('Erro ao adicionar tarefa:', err));
   };
 
+  const excluirTarefa = (id: number) => {
+    axios
+      .delete(`http://localhost:3000/tarefas/${id}`)
+      .then(() => {
+        setTarefas(tarefas.filter(tarefa => tarefa.id !== id));
+        setActiveMenuId(null);
+      })
+      .catch(err => console.error('Erro ao excluir tarefa:', err));
+  };
+
+  const toggleMenu = (id: number) => {
+    setActiveMenuId(activeMenuId === id ? null : id);
+  };
+
+  const toggleDescription = (id: number) => {
+    setExpandedDescriptions(prev => ({
+      ...prev,
+      [id]: !prev[id]
+    }));
+  };
+
   const renderTasksByStatus = (status: Tarefa['status']) => {
     return tarefas
       .filter((tarefa) => tarefa.status === status)
       .map((tarefa) => (
-        <TaskCard key={tarefa.id}>{tarefa.titulo}</TaskCard>
+        <TaskCard key={tarefa.id}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+            {tarefa.titulo}
+            <div style={{ position: 'relative' }}>
+              <TaskMenuButton onClick={() => toggleMenu(tarefa.id)}>
+                <i className="material-icons">more_vert</i>
+              </TaskMenuButton>
+              {activeMenuId === tarefa.id && (
+                <TaskMenu>
+                  <DeleteButton onClick={() => excluirTarefa(tarefa.id)}>
+                    <i className="material-icons" style={{ fontSize: '16px', marginRight: '8px', fontWeight: '400' }}>
+                      delete_outline
+                    </i>
+                    Excluir
+                  </DeleteButton>
+                </TaskMenu>
+              )}
+            </div>
+          </div>
+  
+          {tarefa.descricao && (
+            <DescriptionToggle
+              expanded={!!expandedDescriptions[tarefa.id]}
+              onClick={() => toggleDescription(tarefa.id)}
+            >
+              <span style={{ marginRight: '4px' }}>
+                {expandedDescriptions[tarefa.id] ? 'Esconder descrição' : 'Ler descrição'}
+              </span>
+              <i className="material-icons" style={{ fontSize: '13px' }}>
+                {expandedDescriptions[tarefa.id] ? 'expand_less' : 'expand_more'}
+              </i>
+            </DescriptionToggle>
+          )}
+  
+          {expandedDescriptions[tarefa.id] && tarefa.descricao && (
+            <div style={{ 
+              marginTop: '8px', 
+              backgroundColor: '#f5f5f5', 
+              borderRadius: '4px',
+              wordBreak: 'break-word',
+              fontSize: '13px',
+              fontWeight: '400'
+            }}>
+              {tarefa.descricao}
+            </div>
+          )}
+        </TaskCard>
       ));
   };
 
@@ -181,7 +255,28 @@ export const KanbanBoard = () => {
       {modalAberto && (
         <ModalOverlay>
           <ModalContent>
-            <h3>Nova Task</h3>
+              <div style={{ 
+                position: 'relative',
+                display: 'flex', 
+                justifyContent: 'center', 
+                alignItems: 'center',
+                marginBottom: '16px',
+                width: '100%'
+              }}>
+            <h3 style={{ margin: 0 }}>Nova Task</h3>
+            <CloseIcon
+              src={Close} 
+              alt="Fechar modal" 
+              onClick={() => setModalAberto(false)} 
+              style={{
+                position: 'absolute',
+                right: '0',  
+                top: '50%',
+                transform: 'translateY(-50%)',  
+                cursor: 'pointer'
+              }}
+            />
+            </div>
             <Separator />
             <label htmlFor="titulo">Título *</label>
             <input
@@ -195,8 +290,7 @@ export const KanbanBoard = () => {
               onChange={(e) => setDescricao(e.target.value)}
             />
             <ModalActions>
-              <button onClick={() => setModalAberto(false)}>Cancelar</button>
-              <button onClick={criarTarefa}>Adicionar</button>
+              <button onClick={criarTarefa}>Criar task</button>
             </ModalActions>
           </ModalContent>
         </ModalOverlay>

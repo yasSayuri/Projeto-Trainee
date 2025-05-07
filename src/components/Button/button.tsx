@@ -7,6 +7,7 @@ interface ButtonProps {
   width?: string; 
   to?: string; 
   type?: "button" | "submit" | "reset";
+  onClick?: () => void;
 }
 
 export function Button({ children, width = "327px", to, type = "button" }: ButtonProps) {
