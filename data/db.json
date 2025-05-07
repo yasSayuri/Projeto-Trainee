@@ -3,12 +3,12 @@
     {
       "id": "1",
       "titulo": "Criar layout Kanban",
-      "status": "a-fazer"
+      "status": "em-andamento"
     },
     {
       "id": "2",
       "titulo": "Estilizar colunas",
-      "status": "em-andamento"
+      "status": "a-fazer"
     },
     {
       "id": "3",
@@ -16,27 +16,9 @@
       "status": "feito"
     },
     {
-      "id": "09c0",
-      "titulo": "tyut",
-      "descricao": "",
-      "status": "a-fazer"
-    },
-    {
-      "id": "db8c",
-      "titulo": "hgj",
-      "descricao": "hjh",
-      "status": "a-fazer"
-    },
-    {
-      "id": "a858",
-      "titulo": "ghj",
-      "descricao": "ghj",
-      "status": "a-fazer"
-    },
-    {
-      "id": "fc88",
-      "titulo": "hjg",
-      "descricao": "ghj",
+      "id": "8ac7",
+      "titulo": "hkjhh",
+      "descricao": "uihiukh",
       "status": "a-fazer"
     }
   ]

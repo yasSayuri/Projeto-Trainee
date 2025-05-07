@@ -19,7 +19,8 @@ import {
   TaskMenuButton,
   TaskMenu,
   DeleteButton,
-  DescriptionToggle
+  DescriptionToggle,
+  MoveButton
 } from './styles';
 import task from "../../assets/task.png";
 import Slider from 'react-slick';
@@ -109,6 +110,19 @@ export const KanbanBoard = () => {
     }));
   };
 
+  const moverTarefa = (tarefa: Tarefa, novoStatus: Tarefa['status']) => {
+    const tarefaAtualizada = { ...tarefa, status: novoStatus };
+  
+    axios
+      .put(`http://localhost:3000/tarefas/${tarefa.id}`, tarefaAtualizada)
+      .then(() => {
+        setTarefas((prevTarefas) =>
+          prevTarefas.map((t) => (t.id === tarefa.id ? tarefaAtualizada : t))
+        );
+      })
+      .catch((err) => console.error('Erro ao mover tarefa:', err));
+  };
+
   const renderTasksByStatus = (status: Tarefa['status']) => {
     return tarefas
       .filter((tarefa) => tarefa.status === status)
@@ -148,9 +162,9 @@ export const KanbanBoard = () => {
           )}
   
           {expandedDescriptions[tarefa.id] && tarefa.descricao && (
-            <div style={{ 
-              marginTop: '8px', 
-              backgroundColor: '#f5f5f5', 
+            <div style={{
+              marginTop: '8px',
+              backgroundColor: '#f5f5f5',
               borderRadius: '4px',
               wordBreak: 'break-word',
               fontSize: '13px',
@@ -159,9 +173,38 @@ export const KanbanBoard = () => {
               {tarefa.descricao}
             </div>
           )}
+  
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '8px', marginTop: '12px' }}>
+            {tarefa.status === 'a-fazer' && (
+              <MoveButton onClick={() => moverTarefa(tarefa, 'em-andamento')}>
+                <i className="material-icons">navigate_next</i>
+              </MoveButton>
+            )}
+            {tarefa.status === 'em-andamento' && (
+              <>
+                <MoveButton onClick={() => moverTarefa(tarefa, 'a-fazer')} style={{backgroundColor: 'transparent', borderColor: '#226ED8'}}>
+                  <i className="material-icons" style={{color: '#226ED8'}}>navigate_before</i>
+                </MoveButton>
+                <MoveButton onClick={() => moverTarefa(tarefa, 'feito')}>
+                  <i className="material-icons">navigate_next</i>
+                </MoveButton>
+              </>
+            )}
+            {tarefa.status === 'feito' && (
+              <>
+                <MoveButton onClick={() => moverTarefa(tarefa, 'em-andamento')} style={{backgroundColor: 'transparent', borderColor: '#226ED8'}}>
+                  <i className="material-icons" style={{color: '#226ED8'}}>navigate_before</i>
+                </MoveButton>
+                <MoveButton onClick={() => moverTarefa(tarefa, 'a-fazer')}>
+                  <i className="material-icons">replay</i>
+                </MoveButton>
+              </>
+            )}
+          </div>
         </TaskCard>
       ));
   };
+  
 
   const CustomPrevArrow = (props: any) => {
     const { onClick, currentSlide } = props;

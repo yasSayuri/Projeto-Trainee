@@ -318,3 +318,22 @@ export const DescriptionToggle = styled.div<{ expanded: boolean }>`
   font-size: 13px;
   font-weight: 300;
 `;
+
+export const MoveButton = styled.button`
+  background-color: ${(props) => props.theme['blue-2']};
+  border: 2px solid ${(props) => props.theme['blue-2']};
+  border-radius: 50%;
+  width: 21px;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s;
+
+  i.material-icons {
+    font-size: 16px;
+    color: white;
+  }
+`;
