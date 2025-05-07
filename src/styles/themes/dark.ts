@@ -6,6 +6,7 @@ export const darkTheme = {
     'white3': '#FFFFFF',
     'light-gray': '#333333',
     'white4': '#3D3D3D',
+    'yellow-2': '#3D3D3D',
 
     'd-gray-1': '#3D3D3D',
     'd-gray-2': '#515151',

@@ -4,19 +4,19 @@
       "id": "4cfb",
       "titulo": "jk",
       "descricao": "jkj",
-      "status": "em-andamento"
+      "status": "feito"
     },
     {
       "id": "98d7",
       "titulo": "cvb",
       "descricao": "",
-      "status": "feito"
+      "status": "a-fazer"
     },
     {
       "id": "5ef9",
       "titulo": "cbv",
       "descricao": "cvb",
-      "status": "a-fazer"
+      "status": "em-andamento"
     }
   ]
 }

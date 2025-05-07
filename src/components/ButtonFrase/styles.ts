@@ -11,7 +11,7 @@ export const ModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 1000;
-  
+
 
   @media (min-width: 768px) {
     position: static;
@@ -131,7 +131,7 @@ export const DesktopContainer = styled.div`
   @media (min-width: 768px) {
     display: flex;
     flex-direction: column;
-    background: white;
+    background: ${(props) => props.theme['white4']};
     padding: 1.5rem;
     border-radius: 20px;
     width: 650px;
