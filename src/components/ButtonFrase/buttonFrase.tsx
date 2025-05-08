@@ -11,8 +11,12 @@ import {
 } from "./styles";
 import iconButton from "../../assets/FraseDoDiaBut.png";
 import closeIcon from "../../assets/fecharFrase.png";
+import iconButtonDark from "../../assets/iconDark.svg";
+interface ButtonFraseProps {
+  isDarkMode: boolean;
+}
 
-export const ButtonFrase = () => {
+export const ButtonFrase: React.FC<ButtonFraseProps> = ({ isDarkMode }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [translatedAdvice, setTranslatedAdvice] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -84,7 +88,11 @@ export const ButtonFrase = () => {
     <>
       {!isDesktop && (
         <StyledButton onClick={handleButtonClick}>
-          <img src={iconButton} alt="lâmpada" width="44" />
+          <img 
+            src={isDarkMode ? iconButtonDark : iconButton} 
+            alt="lâmpada" 
+            width="44" 
+          />
           Frase do Dia
         </StyledButton>
       )}
@@ -92,7 +100,10 @@ export const ButtonFrase = () => {
       {isDesktop ? (
         <DesktopContainer>
           <Title>
-            <img src={iconButton} alt="lâmpada" />
+            <img 
+              src={isDarkMode ? iconButtonDark : iconButton} 
+              alt="lâmpada" 
+            />
             Frase do Dia
           </Title>
           {isLoading ? (
@@ -107,7 +118,11 @@ export const ButtonFrase = () => {
             <ModalContent onClick={(e) => e.stopPropagation()}>
               <ModalHeader>
                 <Title>
-                  <img src={iconButton} alt="lâmpada" width="44" />
+                  <img 
+                    src={isDarkMode ? iconButtonDark : iconButton} 
+                    alt="lâmpada" 
+                    width="44" 
+                  />
                   Frase do Dia
                 </Title>
                 <CloseButton onClick={() => setIsModalOpen(false)}>
