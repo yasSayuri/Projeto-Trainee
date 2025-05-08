@@ -55,6 +55,13 @@ export const Footer = styled.footer`
     font-weight: 700;
   }
 
+  a{
+    background-color: transparent;
+    color: ${(props) => props.theme['white3']};
+    font-size: 14px;
+    font-weight: 700;
+  }
+
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: center;

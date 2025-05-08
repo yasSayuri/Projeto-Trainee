@@ -112,15 +112,19 @@ export const TaskCard = styled.div`
   font-weight: 600;
 `;
 
-export const AddTaskIcon = styled.img`
-  width: 24px;
-  height: 24px;
+export const AddTaskIcon = styled.i`
   cursor: pointer;
   position: absolute;
   right: -0.5rem;
+  color: ${(props) => props.theme['blue-2']};
+  font-size: 24px;
+  border: 2px solid ${(props) => props.theme['blue-2']};
+  border-radius: 50%;
+ 
 
   @media (min-width: 768px) {
     left: 32rem;
+    right: auto;
   }
 
   @media (min-width: 1600px) {
@@ -276,11 +280,13 @@ export const CustomArrow = styled.div<{ direction: 'left' | 'right', disabled?: 
     }
 `;
 
-export const CloseIcon = styled.img`
+export const CloseIcon = styled.i`
   cursor: pointer;
-  width: 30px;
-  height: 30px;
+  font-size: 24px;
+  color: ${(props) => props.theme['blue-2']};
   transition: opacity 0.2s;
+  border: 2px solid ${(props) => props.theme['blue-2']};
+  border-radius: 50%;
   
   &:hover {
     opacity: 0.7;

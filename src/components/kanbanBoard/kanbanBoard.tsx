@@ -248,37 +248,38 @@ export const KanbanBoard = () => {
                 {statusLabels[Object.keys(statusLabels)[currentIndex] as Tarefa['status']]}
                 {Object.keys(statusLabels)[currentIndex] === 'a-fazer' && (
                   <AddTaskIcon
-                    src={task}
-                    alt="circulo com mais"
+                    className="material-icons"
                     onClick={() => setModalAberto(true)}
-                  />
+                  >
+                    add
+                  </AddTaskIcon>
                 )}
               </ColumnTitle>
             </ColumnHeader>
           </MobileHeaderContainer>
 
-    <Slider
-        dots={true}
-        infinite={false}
-        speed={300}
-        slidesToShow={1}
-        slidesToScroll={1}
-        beforeChange={(current, next) => setCurrentIndex(next)}
-        prevArrow={<CustomPrevArrow />}
-        nextArrow={<CustomNextArrow />}
-        appendDots={dots => (
-            <div>
-            <ul style={{ margin: "0px", paddingBottom: "16px" }}>{dots}</ul>
-            </div>
-        )}
-        >
-        {Object.keys(statusLabels).map((status) => (
-            <Column key={status}>
-            {renderTasksByStatus(status as Tarefa['status'])}
-            </Column>
-  ))}
-    </Slider>
-  </SliderContainer>
+          <Slider
+            dots={true}
+            infinite={false}
+            speed={300}
+            slidesToShow={1}
+            slidesToScroll={1}
+            beforeChange={(current, next) => setCurrentIndex(next)}
+            prevArrow={<CustomPrevArrow />}
+            nextArrow={<CustomNextArrow />}
+            appendDots={dots => (
+              <div>
+                <ul style={{ margin: "0px", paddingBottom: "16px" }}>{dots}</ul>
+              </div>
+            )}
+          >
+            {Object.keys(statusLabels).map((status) => (
+              <Column key={status}>
+                {renderTasksByStatus(status as Tarefa['status'])}
+              </Column>
+            ))}
+          </Slider>
+        </SliderContainer>
       ) : (
         <DesktopWrapper>
           <ColumnsContainer>
@@ -288,10 +289,11 @@ export const KanbanBoard = () => {
                   {statusLabels[status as Tarefa['status']]}
                   {status === 'a-fazer' && (
                     <AddTaskIcon
-                      src={task}
-                      alt="Adicionar tarefa"
+                      className="material-icons"
                       onClick={() => setModalAberto(true)}
-                    />
+                    >
+                      add
+                    </AddTaskIcon>
                   )}
                 </ColumnTitle>
                 <Column>{renderTasksByStatus(status as Tarefa['status'])}</Column>
@@ -304,27 +306,28 @@ export const KanbanBoard = () => {
       {modalAberto && (
         <ModalOverlay>
           <ModalContent>
-              <div style={{ 
-                position: 'relative',
-                display: 'flex', 
-                justifyContent: 'center', 
-                alignItems: 'center',
-                marginBottom: '16px',
-                width: '100%'
-              }}>
-            <h3 style={{ margin: 0 }}>Nova Task</h3>
-            <CloseIcon
-              src={Close} 
-              alt="Fechar modal" 
-              onClick={() => setModalAberto(false)} 
-              style={{
-                position: 'absolute',
-                right: '0',  
-                top: '50%',
-                transform: 'translateY(-50%)',  
-                cursor: 'pointer'
-              }}
-            />
+            <div style={{ 
+              position: 'relative',
+              display: 'flex', 
+              justifyContent: 'center', 
+              alignItems: 'center',
+              marginBottom: '16px',
+              width: '100%'
+            }}>
+              <h3 style={{ margin: 0 }}>Nova Task</h3>
+              <CloseIcon
+                className="material-icons"
+                onClick={() => setModalAberto(false)} 
+                style={{
+                  position: 'absolute',
+                  right: '0',  
+                  top: '50%',
+                  transform: 'translateY(-50%)',  
+                  cursor: 'pointer'
+                }}
+              >
+                close
+              </CloseIcon>
             </div>
             <Separator />
             <label htmlFor="titulo">Título *</label>

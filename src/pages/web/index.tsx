@@ -42,7 +42,14 @@ export function Web() {
     </Content>
     </PageWrapperWeb>
     <Footer>
-      <h2>© Processo de Trainee <span>Unect Jr.</span></h2>
+      <h2>© Processo de Trainee  <a 
+          href="https://unect.com.br/" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{ textDecoration: "none", color: "inherit" }}
+        >
+          Unect Jr.
+        </a></h2>
       <h2>Feito com <HeartIcon className="material-icons">favorite</HeartIcon> por <span>Yasmin Sayuri</span></h2>
     </Footer>
     </>
