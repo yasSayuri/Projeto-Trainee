@@ -145,7 +145,7 @@ export const ModalOverlay = styled.div`
   z-index: 9999;
 `;
 
-export const ModalContent = styled.div`
+export const ModalContent = styled.div<{ isDarkMode?: boolean }>`
   background: ${(props) => props.theme['white4']};
   padding: 2rem;
   border-radius: 20px;
@@ -172,6 +172,7 @@ export const ModalContent = styled.div`
     border: transparent;
     background-color: ${(props) => props.theme['light-gray']};
     font-size: 14px;
+    color: ${(props) => props.theme['black']};
   }
 
   textarea {

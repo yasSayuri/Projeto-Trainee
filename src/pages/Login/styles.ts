@@ -2,6 +2,10 @@ import styled from "styled-components";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
+interface InputProps {
+  hasError?: boolean
+}
+
 export const Header = styled.header`
   display: flex;
   height: 50px;
@@ -91,12 +95,13 @@ export const FormContainer = styled.div`
       padding: 0.4rem;
       width: 280px;
       font-size: 1rem;
-      border: 0.01px solid #002D6C;
+      border: 0.01px solid ${(props) => props.theme['blue-43']};
       border-radius: 8px;
       background-color: ${(props) => props.theme['blue-7']};
+      color: ${(props) => props.theme['black']};
         
       &::placeholder {
-        color: ${(props) => props.theme['blue-9']}; 
+        color: ${(props) => props.theme['blue-91']}; 
         opacity: 0.5;
       }
 
@@ -177,3 +182,23 @@ export const PasswordInputWrapper = styled.div`
     background-color: transparent;
   }
 `;
+
+export const StyledInput = styled.input<InputProps>`
+  padding: 0.4rem;
+  width: 280px;
+  font-size: 1rem;
+  border: 0.01px solid ${(props) => props.hasError ? '#820000 !important'  : props.theme['blue-43']};
+  border-radius: 8px;
+  background-color: ${(props) => props.hasError ? '#FFAFAF !important' : props.theme['blue-7']};
+  color: ${(props) => props.theme['black']};
+
+  &::placeholder {
+    color: ${(props) => props.theme['blue-91']};
+    opacity: 0.5;
+  }
+
+  &:first-of-type {
+    margin-bottom: 0.6rem;
+  }
+`
+

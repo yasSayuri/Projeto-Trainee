@@ -8,6 +8,7 @@ import {
   PasswordInputWrapper,
   Separator,
   SeparatorDesktop,
+  StyledInput,
   StyledNavLink,
 } from "./styles";
 import logo from "../../assets/logoIMG.png";
@@ -67,26 +68,18 @@ export function Login() {
                 placeholder="Endereço de e-mail"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{
-                  borderColor: "#002D6C",
-                  backgroundColor:"#EEF5FF",
-            
-                }}
                 required
               />
 
               <label htmlFor="password">Senha</label>
               <PasswordInputWrapper>
-                <input
+                <StyledInput
                   type={showPassword ? "text" : "password"}
                   id="password"
                   placeholder="Senha secreta"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  style={{
-                    borderColor: passwordError ? "#820000" : "#002D6C",
-                    backgroundColor: passwordError ? "#FFE5E5" : "#EEF5FF",
-                  }}
+                  hasError={passwordError}
                   required
                 />
                 <span

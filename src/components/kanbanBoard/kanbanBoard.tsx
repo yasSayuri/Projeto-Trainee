@@ -52,7 +52,8 @@ export const KanbanBoard = () => {
   const [descricao, setDescricao] = useState('');
   const [activeMenuId, setActiveMenuId] = useState<number | null>(null);
   const [expandedDescriptions, setExpandedDescriptions] = useState<Record<number, boolean>>({});
-
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
@@ -305,7 +306,7 @@ export const KanbanBoard = () => {
 
       {modalAberto && (
         <ModalOverlay>
-          <ModalContent>
+          <ModalContent isDarkMode={isDarkMode}>
             <div style={{ 
               position: 'relative',
               display: 'flex', 

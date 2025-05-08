@@ -10,7 +10,8 @@ import {
     Header,
     PasswordInputWrapper,
     Separator,
-    SeparatorDesktop
+    SeparatorDesktop,
+    StyledInput
 } from "./styles";
 import { Button } from "../../components/Button/button";
 import { PageWrapper } from "../../components/PageWrapper";
@@ -74,10 +75,6 @@ export function Cadastro() {
                                     placeholder="Seu nome de usuário"
                                     value={username}
                                     onChange={(e) => setUsername(e.target.value)}
-                                    style={{
-                                        borderColor: "#002D6C",
-                                        backgroundColor:"#EEF5FF",
-                                      }}
                                     required
                                 />
                             </div>
@@ -90,10 +87,6 @@ export function Cadastro() {
                                     placeholder="Endereço de e-mail"
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
-                                    style={{
-                                        borderColor: "#002D6C",
-                                        backgroundColor:"#EEF5FF",
-                                      }}
                                     required
                                 />
                             </div>
@@ -101,13 +94,13 @@ export function Cadastro() {
                             <div>
                                 <label htmlFor="password">Senha</label>
                                 <PasswordInputWrapper>
-                                    <input
+                                    <StyledInput
                                         type={showPassword ? "text" : "password"}
                                         id="password"
                                         placeholder="Senha secreta"
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        style={{ backgroundColor: passwordError ? "#FFE5E5" : "#EEF5FF" }}
+                                        hasError={passwordError}
                                         required
                                     />
                                     <span
@@ -122,15 +115,13 @@ export function Cadastro() {
                             <div>
                                 <label htmlFor="confirm-password">Confirme a senha</label>
                                 <PasswordInputWrapper>
-                                    <input
+                                    <StyledInput
                                         type={showPassword ? "text" : "password"}
                                         id="confirm-password"
                                         placeholder="Confirme a senha"
                                         value={confirmPassword}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
-                                        style={{
-                                            backgroundColor: passwordError ? "#FFE5E5" : "#EEF5FF"
-                                        }}
+                                        hasError={passwordError}
                                         required
                                     />
                                     <span
