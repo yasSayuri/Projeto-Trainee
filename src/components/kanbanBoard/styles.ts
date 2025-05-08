@@ -308,7 +308,7 @@ export const TaskMenu = styled.div`
   right: 0;
   top: 100%;
   background: white;
-  border: 1px solid #ddd;
+  border: 1px solid ${(props) => props.theme['white5']};
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   z-index: 10;
@@ -320,7 +320,7 @@ export const DeleteButton = styled.button`
   align-items: center;
   width: 100%;
   padding: 8px 12px;
-  background: none;
+  background: ${(props) => props.theme['white5']};
   border: none;
   color: ${(props) => props.theme['red-2']};
   cursor: pointer;

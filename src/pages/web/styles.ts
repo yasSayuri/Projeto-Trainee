@@ -70,8 +70,9 @@ export const Footer = styled.footer`
   }
 `;
 
-
 export const HeartIcon = styled.i`
   color: ${(props) => props.theme['red-1']};
   font-size: 16px;
 `;
+
+

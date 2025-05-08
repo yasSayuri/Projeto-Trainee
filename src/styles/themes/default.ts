@@ -3,6 +3,7 @@ export const defaultTheme = {
   'white2': '#FFFFFF',
   'white3': '#FFFFFF',
   'white4': '#FFFFFF',
+  'white5': '#FFFFFF',
   'off-white-1': '#FFFCEE',
   'off-white-2': '#FAFAFA',
   'off-white-3': '#FFF5C0',
