@@ -184,6 +184,7 @@ export const ModalContent = styled.div<{ isDarkMode?: boolean }>`
     border: transparent;
     background-color: ${(props) => props.theme['light-gray']};
     font-size: 14px;
+    color: ${(props) => props.theme['black']};
   }
 `;
 
